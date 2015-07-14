@@ -1,16 +1,16 @@
 'use strict';
 import React from 'react';
-import styles from './styles/app';
+import Main from './Main.jsx';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
-class Test extends React.Component {
-  render() {
-    return (
-      <div style={styles.wrapper}>
-        <h1 style={styles.wrapperHeader}>Hello, world!!</h1>
-        <p>This is a simple Hello World application built on ReactJS (ES6) with Gulp</p>
-      </div>
-    );
-  }
-}
+ //Needed for React Developer Tools
+window.React = React;
 
-React.render(<Test/>, document.body);
+//Needed for onTouchTap
+//Can go away when react 1.0 release
+//Check this repo:
+//https://github.com/zilverline/react-tap-event-plugin
+injectTapEventPlugin();
+
+// Render the main app react component into the document body.
+React.render(<Main/>, document.body);

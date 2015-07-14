@@ -1,0 +1,13 @@
+{
+  "currentUser": {
+      "id": 1,
+      "firstName": "Beverly",
+      "lastName": "Johnston",
+      "email": "bjohnston0@nsw.gov.au",
+      "location": "Huta Stara B",
+      "group": "finance",
+      "dateAdded": "2013-07-12T00:51:37Z",
+      "phone": "6-(826)882-3336",
+      "altPhone": 654564
+    }
+}
