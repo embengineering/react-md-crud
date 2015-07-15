@@ -33,4 +33,12 @@ module.exports = {
     dest: dest + "/db",
     port: "3002"
   }
+  ,sass: {
+    src: src + '/sass/**/*.{sass,scss}'
+    ,dest: dest + '/css'
+    ,settings: {
+      indentedSyntax: false // Enable .sass syntax!
+      ,imagePath: 'images' // Used by the image-url helper
+    }
+  }
 };

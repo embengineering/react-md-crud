@@ -1,17 +1,17 @@
 import React from 'react';
 import BaseComponent from './BaseComponent.jsx';
-import Mui from 'material-ui';
+import {AppBar,Styles} from 'material-ui/lib';
 
-let AppBar = Mui.AppBar;
-let Dialog = Mui.Dialog
-let ThemeManager = new Mui.Styles.ThemeManager();
-let Colors = Mui.Styles.Colors;
+//let AppBar = Mui.AppBar;
+//let Dialog = Mui.Dialog
+let ThemeManager = new Styles.ThemeManager();
+//let Colors = Mui.Styles.Colors;
 
 class Main extends BaseComponent {
 
 	componentWillMount() {
 		ThemeManager.setPalette({
-      accent1Color: Colors.deepOrange500
+      accent1Color: Styles.Colors.deepOrange500
     });
 	}
 
