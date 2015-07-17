@@ -1,7 +1,7 @@
 'use strict';
 import React from 'react';
-import Main from './Main.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import Main from './components/Main.jsx';
 
  //Needed for React Developer Tools
 window.React = React;

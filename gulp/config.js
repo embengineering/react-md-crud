@@ -22,7 +22,7 @@ module.exports = {
     // A separate bundle will be generated for each
     // bundle config in the list below
     bundleConfigs: [{
-      entries: src + '/components/app.jsx',
+      entries: src + '/javascript/app.jsx',
       dest: dest,
       outputName: 'bundle.js',
       transform: ['babelify']

@@ -33,7 +33,7 @@
     "gulp-eslint": "^0.14.0",
     "gulp-filesize": "0.0.6",
     "gulp-jade": "*",
-    "gulp-json-server": "*",
+    "gulp-json-server": "0.0.7",
     "gulp-notify": "^2.2.0",
     "gulp-sass": "^2.0.3",
     "gulp-sourcemaps": "^1.5.2",
@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "material-ui": "^0.10.1",
+    "node-fetch": "^1.3.1",
     "react": "*",
     "react-tap-event-plugin": "^0.1.7"
   }
