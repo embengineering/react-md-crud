@@ -1,5 +1,5 @@
 var React = require('react');
-var BaseComponent = require('./common/BaseComponent.jsx');
+var BaseComponent = require('common/BaseComponent.jsx');
 
 class ExampleComponent extends BaseComponent {
   constructor(props) {
@@ -26,8 +26,9 @@ class ExampleComponent extends BaseComponent {
 ExampleComponent.propTypes = {
   name: React.PropTypes.string
 };
+
 ExampleComponent.defaultProps = {
   name: 'Test'
 };
 
-module.exports = ExampleComponent;
+export default ExampleComponent;
