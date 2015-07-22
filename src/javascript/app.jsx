@@ -1,7 +1,8 @@
 'use strict';
 import React from 'react';
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import {run,Route,HashLocation,DefaultRoute} from 'react-router';
 import Main from './components/Main.jsx';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
  //Needed for React Developer Tools
 window.React = React;
@@ -12,5 +13,13 @@ window.React = React;
 //https://github.com/zilverline/react-tap-event-plugin
 injectTapEventPlugin();
 
-// Render the main app react component into the document body.
-React.render(<Main/>, document.body);
+var routes = (
+  <Route handler={Main}>
+    <DefaultRoute handler={Main}/>
+    <Route handler={Main} name="main" />
+  </Route>
+);
+
+run(routes, HashLocation, (Root) => {
+  React.render(<Root/>, document.body);
+});
