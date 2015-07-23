@@ -1,8 +1,9 @@
 'use strict';
 import React from 'react';
 import {run,Route,HashLocation,DefaultRoute} from 'react-router';
-import Main from './components/Main.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import Main from './components/Main.jsx';
+import EmployeeList from './components/EmployeeList.jsx';
 
  //Needed for React Developer Tools
 window.React = React;
@@ -15,8 +16,8 @@ injectTapEventPlugin();
 
 var routes = (
   <Route handler={Main}>
-    <DefaultRoute handler={Main}/>
-    <Route handler={Main} name="main" />
+    <DefaultRoute handler={EmployeeList}/>
+    <Route handler={EmployeeList} name="employees" />
   </Route>
 );
 

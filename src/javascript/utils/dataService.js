@@ -1,6 +1,9 @@
-import fetch from 'node-fetch';
+import config from '../../../config';
 
-var config = require('../../config');
+// This adds fetch and es6-promise as a global
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
+
 var rootUrl = window.location.hostname === 'localhost' ? `http://localhost:${config.port}` : '';
 
 var Dataservice = function (){
@@ -10,16 +13,20 @@ var Dataservice = function (){
 };
 
 Dataservice.prototype.send = function(method, url, data, handleError) {
-  var requestData = '';
+  const requestSettings = { method: method };
   if (method !== 'GET') {
-    requestData = JSON.stringify(data);
+    requestSettings.body = JSON.stringify(data);
+    requestSettings.headers = {
+      Accept: 'application/json'
+      ,'Content-Type': 'application/json'
+    };
   }
-  return fetch(rootUrl + url, {
-    ,type: method
-    ,data: requestData
-    ,global: handleError
-    ,contentType: 'application/json'
-  });
+  return fetch(rootUrl + url, requestSettings)
+    .catch((error) => {
+      if(handleError) {
+        handleError(error);
+      }
+    });
 };
 
 Dataservice.prototype.get = function(url, handleError) {
