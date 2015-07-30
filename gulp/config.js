@@ -1,9 +1,11 @@
-var dest = './build';
-var src = './src';
+var dest = './example/dist';
+var src = './example/src';
+var libDest = './lib';
+var libSrc = './src';
 
 module.exports = {
   clean: {
-    dest: dest
+    dest: [dest, libDest]
   }
   ,browserSync: {
     server: {
@@ -40,5 +42,9 @@ module.exports = {
       indentedSyntax: false // Enable .sass syntax!
       ,imagePath: 'images' // Used by the image-url helper
     }
+  }
+  ,build: {
+    dest: libDest
+    ,src: libSrc
   }
 };

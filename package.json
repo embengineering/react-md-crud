@@ -1,5 +1,5 @@
 {
-  "name": "react-material-design-crud",
+  "name": "emb-react-md",
   "version": "0.0.1",
   "description": "CRUD application built on React Material Design",
   "repository": {
@@ -11,12 +11,14 @@
     "url": "https://github.com/emb0624/react-material-design-crud/issues"
   },
   "homepage": "https://github.com/emb0624/react-material-design-crud",
+  "main": "lib/index.js",
+  "scripts": {
+    "install": "gulp build"
+  },
   "aliasify": {
     "aliases": {
       "underscore": "lodash",
-      "app": "./src/javascript",
-      "utils": "./src/javascript/utils",
-      "components": "./src/javascript/components"
+      "core": "./lib"
     }
   },
   "license": "MIT",
@@ -57,7 +59,7 @@
     "lodash": "^3.10.0",
     "material-ui": "^0.10.1",
     "node-fetch": "^1.3.1",
-    "react": "*",
+    "react": "^0.13.3",
     "react-router": "^0.13.3",
     "react-tap-event-plugin": "^0.1.7",
     "underscore": "^1.8.3"

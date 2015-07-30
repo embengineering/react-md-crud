@@ -3,6 +3,6 @@ var config 	= require('../config').clean;
 var del 		= require('del');
 
 gulp.task('clean', function(cb) {
-  del([config.dest], cb);
+  del(config.dest, cb);
 });
 
