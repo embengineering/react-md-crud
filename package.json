@@ -54,7 +54,6 @@
   },
   "dependencies": {
     "es6-promise": "^2.3.0",
-    "griddle-react": "^0.2.13",
     "isomorphic-fetch": "^2.1.1",
     "lodash": "^3.10.0",
     "material-ui": "^0.10.1",

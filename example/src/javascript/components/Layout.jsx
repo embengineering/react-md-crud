@@ -41,7 +41,7 @@ class Layout extends BaseComponent {
     return (
       <div>
         <AppBar
-          title="REACT-CRUD"
+          title="REACT-MD-CRUD"
           onLeftIconButtonTouchTap={this.handleNavLeftIconClick} />
         <LeftNav
           ref="leftNav"

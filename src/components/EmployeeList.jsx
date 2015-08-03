@@ -1,21 +1,16 @@
 import React from 'react';
 import BaseComponent from './BaseComponent';
-import Griddle from 'griddle-react';
+import _ from 'lodash';
 import api from '../utils/dataService';
-import { Card } from 'material-ui';
+import { Card, List, ListItem, Avatar, FontIcon, IconMenu, MenuItem, IconButton } from 'material-ui';
 
 class EmployeeList extends BaseComponent {
 
   constructor(props) {
     super(props);
-    this._bind('setPage', 'sortData', 'changeSort',  'setFilter');
+    this._bind('getExternalData');
     this.state = {
     	results: []
-    	,currentPage: 0
-    	,maxPages: 0
-    	,externalResultsPerPage: 5
-    	,externalSortColumn: null
-    	,externalSortAscending: true
     };
   }
 
@@ -30,41 +25,35 @@ class EmployeeList extends BaseComponent {
         response.json().then((data) => {
           this.setState({
             results: data
-            ,currentPage: 0
-            ,maxPages: Math.ceil(totalCount / this.state.pageSize)
-            ,isLoading: false
           });
         });
       });
   }
 
-  //what page is currently viewed
-  setPage(){}
-
-  //this will handle how the data is sorted
-  sortData(){}
-
-  //this changes whether data is sorted in ascending or descending order
-  changeSort(){}
-
-  //this method handles the filtering of the data
-  setFilter(){}
-
-  //this method handles determining the page size
-  setPageSize(){}
-
   render() {
     return (
-      <Card style={{maxWidth: '90%', margin: '20px auto 0'}}>
-        <Griddle useExternal={true} externalSetPage={this.setPage}
-          externalChangeSort={this.changeSort} externalSetFilter={this.setFilter}
-          externalSetPageSize={this.setPageSize} externalMaxPage={this.state.maxPages}
-          externalCurrentPage={this.state.currentPage} results={this.state.results}
-          resultsPerPage={this.state.externalResultsPerPage}
-          externalSortColumn={this.state.externalSortColumn}
-          externalSortAscending={this.state.externalSortAscending}
-          showFilter={true} showSettings={true}
-          columns={['Id', 'FirstName', 'LastName', 'SecondLastName', 'Email']} />
+      <Card style={{maxWidth: 300, margin: 20}}>
+        <List subheader="Employees">
+          {this.state.results.map(function(result) {
+            return <ListItem 
+              leftAvatar={<Avatar icon={<FontIcon className="fa fa-user" />} />}
+              key={result.id} 
+              primaryText={result.firstName + ' ' + result.lastName} 
+              secondaryText={
+                <p>
+                  <span>{result.jobTitle}</span><br/>
+                  {result.email}
+                </p>
+              }
+              rigthIconButton={
+                <IconMenu iconButtonElement={<IconButton iconClassName="fa fa-ellipsis-v" tooltip="Actions"/>}>
+                  <MenuItem primaryText="Edit" />
+                  <MenuItem primaryText="Delete" />
+                </IconMenu>
+              }
+              />;
+          })}
+      </List>
       </Card>
     );
   }
