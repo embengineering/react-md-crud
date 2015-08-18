@@ -2,7 +2,7 @@ import React from 'react';
 import BaseComponent from './BaseComponent';
 import _ from 'lodash';
 import api from '../utils/dataService';
-import { Card, List, ListItem, Avatar, FontIcon, IconMenu, MenuItem, IconButton } from 'material-ui';
+import { Card, CardTitle, List, ListItem, Avatar, FontIcon, IconMenu, MenuItem, IconButton } from 'material-ui';
 
 class EmployeeList extends BaseComponent {
 
@@ -33,7 +33,8 @@ class EmployeeList extends BaseComponent {
   render() {
     return (
       <Card style={{maxWidth: 300, margin: 20}}>
-        <List subheader="Employees">
+        <CardTitle title="Employees" />
+        <List>
           {this.state.results.map(function(result) {
             return <ListItem 
               leftAvatar={<Avatar icon={<FontIcon className="fa fa-user" />} />}
@@ -53,7 +54,7 @@ class EmployeeList extends BaseComponent {
               }
               />;
           })}
-      </List>
+        </List>
       </Card>
     );
   }

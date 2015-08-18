@@ -3,7 +3,7 @@ import React from 'react';
 import { run, Route, HashLocation, DefaultRoute } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Layout from './components/Layout.jsx';
-import { EmployeeList } from 'core';
+import Home from './components/Home.jsx';
 
  //Needed for React Developer Tools
 window.React = React;
@@ -16,8 +16,8 @@ injectTapEventPlugin();
 
 var routes = (
   <Route handler={Layout}>
-    <DefaultRoute handler={EmployeeList}/>
-    <Route handler={EmployeeList} name="employees" />
+    <DefaultRoute handler={Home}/>
+    <Route handler={Home} name="employees" />
   </Route>
 );
 
