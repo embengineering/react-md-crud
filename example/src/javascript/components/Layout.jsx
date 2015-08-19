@@ -1,7 +1,7 @@
 import React from 'react';
 import { BaseComponent } from 'core';
 import { RouteHandler } from 'react-router';
-import { AppBar, Styles, LeftNav, MenuItem } from 'material-ui';
+import { AppBar, Styles, LeftNav, MenuItem, FloatingActionButton, FontIcon } from 'material-ui';
 
 const ThemeManager = new Styles.ThemeManager();
 
@@ -48,6 +48,9 @@ class Layout extends BaseComponent {
           docked={false}
           menuItems={this.getMenuItems()} />
         <RouteHandler />
+        <FloatingActionButton style={{ position: 'fixed', top: 30, right: 30 }}>
+          <FontIcon className="fa fa-ellipsis-v" />
+        </FloatingActionButton>
       </div>
     );
   }
