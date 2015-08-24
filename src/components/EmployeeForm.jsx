@@ -40,48 +40,51 @@ class EmpoyeeForm extends BaseComponent {
   }
 
   render() {
-    const textFieldCommon = { marginRight: 15 };
+    const textFieldCommon = { minWidth: 200, marginLeft: 20 };
 
     return (
-      <Card style={{ margin: 20 }}>
+      <Card {...this.props} >
         <CardTitle title={this.state.cardTitle} />
-        <div style={{ display: 'flex', flexDirection: 'row', padding: 24 }}>
-          <div style={{ flex: 'flex-grow' }}>
-            <TextField
-              style={textFieldCommon}
-              hintText="First Name"
-              floatingLabelText="First Name" />
-            <TextField
-              style={textFieldCommon}
-              hintText="Last Name"
-              floatingLabelText="Last Name" />
-            <TextField
-              style={textFieldCommon}
-              hintText="Second Last Name"
-              floatingLabelText="Second Last Name" />            
-          </div>   
-          <div style={{ flex: 'flex-grow' }}>
-            <TextField
-              style={textFieldCommon}
-              hintText="Job Title"
-              floatingLabelText="Job Title" />
-            <TextField
-              style={textFieldCommon}
-              hintText="Location"
-              floatingLabelText="Location" />
-            <TextField
-              style={textFieldCommon}
-              type="email"
-              hintText="Email"
-              floatingLabelText="Email" />
-            <TextField
-              style={textFieldCommon}
-              type="tel"
-              hintText="Phone"
-              floatingLabelText="Phone" />
-          </div>                
+        <div style={{ 
+          display: 'flex'
+          ,flexFlow: 'row wrap'
+          ,justifyContent: 'flex-start' 
+          ,alignContent: 'center'
+          ,alignItems: 'center'
+          ,height: 'auto'
+        }}>
+          <TextField
+            style={textFieldCommon}
+            hintText="First Name"
+            floatingLabelText="First Name" />
+          <TextField
+            style={textFieldCommon}
+            hintText="Last Name"
+            floatingLabelText="Last Name" />
+          <TextField
+            style={textFieldCommon}
+            hintText="Second Last Name"
+            floatingLabelText="Second Last Name" />            
+          <TextField
+            style={textFieldCommon}
+            hintText="Job Title"
+            floatingLabelText="Job Title" />
+          <TextField
+            style={textFieldCommon}
+            hintText="Location"
+            floatingLabelText="Location" />
+          <TextField
+            style={textFieldCommon}
+            type="email"
+            hintText="Email"
+            floatingLabelText="Email" />
+          <TextField
+            style={textFieldCommon}
+            type="tel"
+            hintText="Phone"
+            floatingLabelText="Phone" />
         </div>
-        <div style={{ padding: 10 }}>
+        <div style={{ margin: '30px 20px' }}>
           <FlatButton  label="Save" primary={true} />
           <FlatButton  label="Cancel" secondary={true} />
         </div>

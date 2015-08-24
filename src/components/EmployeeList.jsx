@@ -32,7 +32,7 @@ class EmployeeList extends BaseComponent {
 
   render() {
     return (
-      <Card style={{maxWidth: 300, margin: 20}}>
+      <Card {...this.props}>
         <CardTitle title="Employees" />
         <List>
           {this.state.results.map(function(result) {
@@ -48,8 +48,8 @@ class EmployeeList extends BaseComponent {
               }
               rigthIconButton={
                 <IconMenu iconButtonElement={<IconButton iconClassName="fa fa-ellipsis-v" tooltip="Actions"/>}>
-                  <MenuItem primaryText="Edit" />
-                  <MenuItem primaryText="Delete" />
+                  <MenuItem index={0} primaryText="Edit" />
+                  <MenuItem index={1} primaryText="Delete" />
                 </IconMenu>
               }
               />;

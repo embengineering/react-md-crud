@@ -10,13 +10,9 @@ class Home extends BaseComponent {
 
   render() {
     return (
-      <div style={{ display: 'flex', flexDirection: 'row' }}>
-        <div style={{ flex: 'flex-grow' }}>
-          <EmployeeList />
-        </div>
-        <div style={{ flex: 'flex-grow' }}>
-          <EmployeeForm  />
-        </div>
+      <div style={{ display: 'flex', flexFlow: 'row' }}>
+        <EmployeeList style={{ flex: 1, order: 1, margin: 20 }} />
+        <EmployeeForm style={{ flex: 2, order: 2, margin: 20 }} />
       </div>
     );
   }

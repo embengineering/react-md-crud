@@ -48,8 +48,8 @@ class Layout extends BaseComponent {
           docked={false}
           menuItems={this.getMenuItems()} />
         <RouteHandler />
-        <FloatingActionButton style={{ position: 'fixed', top: 30, right: 30 }}>
-          <FontIcon className="fa fa-ellipsis-v" />
+        <FloatingActionButton style={{ position: 'fixed', top: 30, right: 30, zIndex: 2 }}>
+          <FontIcon className="fa fa-plus" />
         </FloatingActionButton>
       </div>
     );
