@@ -8,7 +8,7 @@ class EmployeeList extends BaseComponent {
 
   constructor(props) {
     super(props);
-    this._bind('getExternalData');
+    this._bind('getExternalData', 'handleEmployeeClick');
     this.state = {
     	results: []
     };
@@ -16,6 +16,10 @@ class EmployeeList extends BaseComponent {
 
   componentDidMount() {
     this.getExternalData();
+  }
+
+  handleEmployeeClick(event) {
+    this.props.onSelect(event);
   }
 
   getExternalData() {
@@ -35,8 +39,9 @@ class EmployeeList extends BaseComponent {
       <Card {...this.props}>
         <CardTitle title="Employees" />
         <List>
-          {this.state.results.map(function(result) {
+          {this.state.results.map((result) => {
             return <ListItem 
+              onClick={this.handleEmployeeClick}
               leftAvatar={<Avatar icon={<FontIcon className="fa fa-user" />} />}
               key={result.id} 
               primaryText={result.firstName + ' ' + result.lastName} 
@@ -59,5 +64,13 @@ class EmployeeList extends BaseComponent {
     );
   }
 }
+
+EmployeeList.propTypes = {
+  onSelect: React.PropTypes.func
+};
+
+EmployeeList.defaultProps = {
+  onSelect: () => {}
+};
 
 export default EmployeeList;
