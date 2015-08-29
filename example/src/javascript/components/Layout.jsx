@@ -1,5 +1,5 @@
 import React from 'react';
-import { BaseComponent } from 'core';
+import { BaseComponent, Toastr } from 'core';
 import { RouteHandler } from 'react-router';
 import { AppBar, Styles, LeftNav, MenuItem } from 'material-ui';
 
@@ -48,6 +48,7 @@ class Layout extends BaseComponent {
           docked={false}
           menuItems={this.getMenuItems()} />
         <RouteHandler />        
+        <Toastr />
       </div>
     );
   }

@@ -43,6 +43,14 @@ module.exports = {
       ,imagePath: 'images' // Used by the image-url helper
     }
   }
+  ,animateCss: {
+    src: ['./node_modules/animate.css/animate.min.css']
+    ,dest: src + '/sass/vendor/animate-css'
+  }
+  ,toastr: {
+    src: ['./node_modules/toastr/build/toastr.min.css']
+    ,dest: src + '/sass/vendor/toastr'
+  }
   ,build: {
     dest: libDest
     ,src: libSrc

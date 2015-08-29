@@ -1,6 +1,7 @@
 import BaseComponent from './components/BaseComponent';
 import EmployeeList from './components/EmployeeList';
 import EmployeeForm from './components/EmployeeForm';
+import Toastr from './components/Toastr';
 
 import Actions from './actions';
 import Constants from './constants';
@@ -13,6 +14,7 @@ export default {
 	BaseComponent
   ,EmployeeList
   ,EmployeeForm
+  ,Toastr
 
   ,Action: Actions
   ,Constant: Constants

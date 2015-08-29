@@ -4,9 +4,9 @@ var sourcemaps   = require('gulp-sourcemaps');
 var handleErrors = require('../util/handleErrors');
 var config       = require('../config').sass;
 var autoprefixer = require('gulp-autoprefixer');
-var changed    = require('gulp-changed');
+var changed    	 = require('gulp-changed');
 
-gulp.task('sass', function () {
+gulp.task('sass', ['toastr', 'animateCss'], function () {
   return gulp.src(config.src)
     .pipe(sourcemaps.init())
     .pipe(sass(config.settings))

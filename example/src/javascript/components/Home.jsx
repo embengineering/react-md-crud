@@ -1,5 +1,5 @@
 import React from 'react';
-import { BaseComponent, EmployeeList, EmployeeForm } from 'core';
+import { BaseComponent, EmployeeList, EmployeeForm, Action } from 'core';
 import { FloatingActionButton, FontIcon } from 'material-ui';
 
 class Home extends BaseComponent {
@@ -21,6 +21,11 @@ class Home extends BaseComponent {
 
   handleSaveForm() {
     this.refs.employeeList.refresh();
+    Action.Notification.success('Employee successfully saved!', 'Notification', {
+      closeButton: true
+      ,timeOut: 3000 // How long the toast will display without user interaction
+      ,extendedTimeOut: 3000 // How long the toast will display after a user hovers over it
+    });
   }
 
   scrollTop() {
