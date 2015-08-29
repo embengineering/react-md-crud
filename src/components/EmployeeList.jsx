@@ -8,7 +8,7 @@ class EmployeeList extends BaseComponent {
 
   constructor(props) {
     super(props);
-    this._bind('getExternalData', 'handleEmployeeClick');
+    this._bind('getExternalData', 'renderList');
     this.state = {
     	results: []
     };
@@ -18,8 +18,8 @@ class EmployeeList extends BaseComponent {
     this.getExternalData();
   }
 
-  handleEmployeeClick(event) {
-    this.props.onSelect(event);
+  refresh() {
+    this.getExternalData();
   }
 
   getExternalData() {
@@ -34,31 +34,53 @@ class EmployeeList extends BaseComponent {
       });
   }
 
+  renderRightIconButton() {
+    return (
+      <IconMenu iconButtonElement={<IconButton iconClassName="fa fa-ellipsis-v" tooltip="Actions"/>}>
+        <MenuItem index={0} primaryText="Edit" />
+        <MenuItem index={1} primaryText="Delete" />
+      </IconMenu>
+    );
+  }
+
+  renderSecondaryText(result) {
+    return (
+      <p>
+        <span>{result.jobTitle}</span><br/>
+        {result.email}
+      </p>
+    );
+  }
+
+  renderLeftAvatar() {
+    return (
+      <Avatar icon={<FontIcon className="fa fa-user" />} />
+    );
+  }
+
+  renderList() {
+    return (
+      this.state.results.map((result) => {
+        return (
+          <ListItem 
+            key={result.id} 
+            primaryText={result.firstName + ' ' + result.lastName} 
+            onClick={this.props.onSelect.bind(this, result)}
+            leftAvatar={this.renderLeftAvatar()}
+            secondaryText={this.renderSecondaryText(result)}
+            rigthIconButton={this.renderRightIconButton()}
+          />
+        );
+      })
+    );
+  }
+
   render() {
     return (
       <Card {...this.props}>
         <CardTitle title="Employees" />
         <List>
-          {this.state.results.map((result) => {
-            return <ListItem 
-              onClick={this.handleEmployeeClick}
-              leftAvatar={<Avatar icon={<FontIcon className="fa fa-user" />} />}
-              key={result.id} 
-              primaryText={result.firstName + ' ' + result.lastName} 
-              secondaryText={
-                <p>
-                  <span>{result.jobTitle}</span><br/>
-                  {result.email}
-                </p>
-              }
-              rigthIconButton={
-                <IconMenu iconButtonElement={<IconButton iconClassName="fa fa-ellipsis-v" tooltip="Actions"/>}>
-                  <MenuItem index={0} primaryText="Edit" />
-                  <MenuItem index={1} primaryText="Delete" />
-                </IconMenu>
-              }
-              />;
-          })}
+          {this.renderList()}
         </List>
       </Card>
     );

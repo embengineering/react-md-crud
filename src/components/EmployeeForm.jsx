@@ -7,19 +7,44 @@ class EmpoyeeForm extends BaseComponent {
 
   constructor(props) {
     super(props);
-    this._bind('resetForm', 'handleFieldChange');
+    this._bind('resetForm', 'handleFieldChange', 'setEmployee', 'handleSaveButton');
     this.state = {
-      cardTitle: 'New Employee'
+      title: 'New Employee'
     	,model: this.getInitialModel()
     };
   }
 
-  componentDidMount() {
-    //this.getExternalData();
+  handleSaveButton() {
+    if(this.state.model.id) {
+      this.updateEmployee(this.state.model, this.props.onSave);
+    } else {
+      this.createEmployee(this.state.model, this.props.onSave);
+    }    
+  }
+
+  updateEmployee(employee, callback) {
+    api.put('/employees/' + employee.id, employee)
+      .then((response) => {
+        response.json().then((data) => {
+          callback(data);
+        });
+      });
+  }
+
+  createEmployee(employee, callback) {
+    api.post('/employees', employee)
+      .then((response) => {
+        response.json().then((data) => {
+          callback(data);
+        });
+      });
   }
 
   resetForm() {
-    this.setState({ model: this.getInitialModel() });
+    this.setState({ 
+      title: 'New Employee'
+      ,model: this.getInitialModel() 
+    });
   }
 
   getInitialModel() {
@@ -36,16 +61,11 @@ class EmpoyeeForm extends BaseComponent {
     };
   }
 
-  getExternalData(employeeId) {
-  	api.get('/employees/' + employeeId)
-      .then((response) => {
-        const totalCount = response.headers.get('X-Total-Count');
-        response.json().then((data) => {
-          this.setState({
-            results: data
-          });
-        });
-      });
+  setEmployee(data) {
+    this.setState({ 
+      title: 'Update Employee'
+      ,model: data 
+    });
   }
 
   handleFieldChange(event) {
@@ -58,7 +78,7 @@ class EmpoyeeForm extends BaseComponent {
 
     return (
       <Card {...this.props} >
-        <CardTitle title={this.state.cardTitle} />
+        <CardTitle title={this.state.title} />
         <div style={{ 
           display: 'flex'
           ,flexFlow: 'row wrap'
@@ -120,12 +140,28 @@ class EmpoyeeForm extends BaseComponent {
             floatingLabelText="Phone" />
         </div>
         <div style={{ margin: '30px 20px' }}>
-          <FlatButton  label="Save" primary={true} />
-          <FlatButton  label="Cancel" secondary={true} />
+          <FlatButton 
+            label="Save" 
+            primary={true}
+            onClick={this.handleSaveButton}
+          />
+          <FlatButton 
+            label="Cancel" 
+            secondary={true} 
+            onClick={this.resetForm}
+          />
         </div>
       </Card>
     );
   }
 }
+
+EmpoyeeForm.propTypes = {
+  onSave: React.PropTypes.func
+};
+
+EmpoyeeForm.defaultProps = {
+  onSave: () => {}
+};
 
 export default EmpoyeeForm;
