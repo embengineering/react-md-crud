@@ -2,6 +2,7 @@ import BaseComponent from './components/BaseComponent';
 import EmployeeList from './components/EmployeeList';
 import EmployeeForm from './components/EmployeeForm';
 import Toastr from './components/Toastr';
+import ConfirmationModal from './components/ConfirmationModal';
 
 import Actions from './actions';
 import Constants from './constants';
@@ -15,6 +16,7 @@ export default {
   ,EmployeeList
   ,EmployeeForm
   ,Toastr
+  ,ConfirmationModal
 
   ,Action: Actions
   ,Constant: Constants

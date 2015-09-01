@@ -50,7 +50,10 @@ class EmployeeList extends BaseComponent {
         	primaryText="Edit"
         	onClick={this.props.onSelect.bind(this, result)}
         	/>
-        <MenuItem primaryText="Delete" />
+        <MenuItem 
+        	primaryText="Delete" 
+      		onClick={this.props.onDelete.bind(this.result)}
+        	/>
       </IconMenu>
     );
   }
@@ -100,10 +103,12 @@ class EmployeeList extends BaseComponent {
 
 EmployeeList.propTypes = {
   onSelect: React.PropTypes.func
+  ,onDelete: React.PropTypes.func
 };
 
 EmployeeList.defaultProps = {
   onSelect: () => {}
+  ,onDelete: () => {}
 };
 
 export default EmployeeList;
