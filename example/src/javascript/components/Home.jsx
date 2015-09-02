@@ -1,17 +1,26 @@
 import React from 'react';
-import { BaseComponent, EmployeeList, EmployeeForm, Action, ConfirmationModal, Utils } from 'core';
+import { BaseComponent, EmployeeList, EmployeeForm, Action } from 'core';
 import { FloatingActionButton, FontIcon } from 'material-ui';
 
 class Home extends BaseComponent {
 
   constructor(props) {
     super(props);
-    this._bind('handleEmployeeSelect', 'handleAddNew', 'handleSaveForm', 'handleDelete');
+    this._bind('handleEmployeeSelect', 'handleAddNew', 'handleSaveForm', 'handleEmployeeDelete');
   }
 
   handleEmployeeSelect(data) {
     this.scrollTop();
     this.refs.employeeForm.setEmployee(data);
+  }
+
+  handleEmployeeDelete() {
+    this.refs.employeeList.refresh();
+    Action.Notification.success('Contact successfully deleted!', 'Notification', {
+      closeButton: true
+      ,timeOut: 3000 // How long the toast will display without user interaction
+      ,extendedTimeOut: 3000 // How long the toast will display after a user hovers over it
+    });
   }
 
   handleAddNew() {
@@ -28,25 +37,6 @@ class Home extends BaseComponent {
     });
   }
 
-  handleDelete() {
-    this.refs.deleteConfirmation.show();
-  }
-
-  deleteContact(data) {
-    const url= `/contacts/${data.id}`;
-    Utils.dataService.delete(url)
-      .then((response) => {
-        response.json().then(() => {
-          Action.Notification.success('Contact successfully deleted!', 'Notification', {
-            closeButton: true
-            ,timeOut: 3000 // How long the toast will display without user interaction
-            ,extendedTimeOut: 3000 // How long the toast will display after a user hovers over it
-          });
-          this.refs.employeeList.refresh();
-        });
-      });
-  }
-
   scrollTop() {
     document.body.scrollTop = 0;
   }
@@ -58,7 +48,7 @@ class Home extends BaseComponent {
           ref="employeeList" 
           style={{ flex: 1, order: 1, margin: 20 }} 
           onSelect={this.handleEmployeeSelect}
-          onDelete={this.handleDelete}
+          onDelete={this.handleEmployeeDelete}
           />
         <EmployeeForm
           ref="employeeForm"
@@ -69,10 +59,7 @@ class Home extends BaseComponent {
           onClick={this.handleAddNew}
           style={{ position: 'fixed', top: 30, right: 30, zIndex: 2 }}>
           <FontIcon className="fa fa-plus" />
-        </FloatingActionButton>
-        <ConfirmationModal 
-          ref="deleteConfirmation"
-          onSubmit={this.handleSubmit} />
+        </FloatingActionButton>        
       </div>
     );
   }

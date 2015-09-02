@@ -6,17 +6,11 @@ class ConfirmationModal extends BaseComponent {
 
   constructor(props) {
     super(props);
-    this._bind('handleClose', 'handleSubmit');
-  }
-
-  componentWillReceiveProps(newProps) {
-  	if(newProps.show) {
-  		this.refs.confirmationModal.show();
-  	}
+    this._bind('handleClose', 'handleSubmit', 'show', 'dismiss');
   }
 
   handleClose() {
-    this.refs.confirmationModal.dismiss();
+    this.dismiss();
   }
 
   handleSubmit(event) {
@@ -37,6 +31,14 @@ class ConfirmationModal extends BaseComponent {
 		];
   }
 
+  show() {
+		this.refs.confirmationModal.show();
+  }
+
+  dismiss() {
+		this.refs.confirmationModal.dismiss();
+  }
+
   render () {
     return (
       <Dialog
@@ -55,7 +57,6 @@ ConfirmationModal.propTypes = {
   ,message: React.PropTypes.string
   ,cancelBtnText: React.PropTypes.string
   ,submitBtnText: React.PropTypes.string
-  ,show: React.PropTypes.bool.isRequired
   ,onSubmit: React.PropTypes.func.isRequired
 };
 

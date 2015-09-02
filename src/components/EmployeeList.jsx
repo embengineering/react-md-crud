@@ -11,7 +11,7 @@ class EmployeeList extends BaseComponent {
 
   constructor(props) {
     super(props);
-    this._bind('getExternalData', 'renderList', 'renderRightMenu');
+    this._bind('getExternalData', 'renderList', 'renderRightMenu', 'handleDelete');
     this.state = {
     	results: []
     };
@@ -36,6 +36,16 @@ class EmployeeList extends BaseComponent {
         });
       });
   }
+  
+  handleDelete(data) {
+    const url= `/employees/${data.id}`;
+    api.delete(url)
+      .then((response) => {
+        response.json().then(() => {
+          this.props.onDelete(response);
+        });
+      });
+  }
 
   renderRightIconButton() {
   	return (
@@ -52,7 +62,7 @@ class EmployeeList extends BaseComponent {
         	/>
         <MenuItem 
         	primaryText="Delete" 
-      		onClick={this.props.onDelete.bind(this.result)}
+      		onClick={this.handleDelete.bind(this, result)}
         	/>
       </IconMenu>
     );
