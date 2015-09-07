@@ -22,5 +22,5 @@ var routes = (
 );
 
 run(routes, HashLocation, (Root) => {
-  React.render(<Root/>, document.body);
+  React.render(<Root/>, document.getElementById('mainApp'));
 });

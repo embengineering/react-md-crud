@@ -13,9 +13,9 @@ module.exports = {
       baseDir: dest
     }
   }
-  ,jade: {
-    src: src + '/jade/*.jade',
-    dest: dest
+  ,html: {
+    src: src + '/*.html'
+    ,dest: dest
   }
   ,eslint: {
     src: src + '/js/**/*.js*'

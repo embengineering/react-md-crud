@@ -3,5 +3,5 @@ var runSequence = require('run-sequence');
 
 gulp.task('default', ['clean'], function(callback) {
   callback = callback || function() {};
-  return runSequence(['build', 'sass', 'eslint', 'jade'], 'watch', 'jsonServer', callback);
+  return runSequence(['build', 'sass', 'eslint', 'html', 'jsonServer'], 'watch', callback);
 });
