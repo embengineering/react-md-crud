@@ -1,6 +1,10 @@
 {
   "name": "emb-react-md",
   "version": "0.0.1",
+  "engines": {
+    "node": "4.0.x",
+    "npm": "2.14.x"
+  },
   "description": "CRUD application built on React Material Design",
   "repository": {
     "type": "git",
