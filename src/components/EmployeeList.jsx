@@ -26,7 +26,8 @@ class EmployeeList extends BaseComponent {
   }
 
   getExternalData() {
-  	api.get('/employees')
+    const url= '/employees.json';
+  	api.get(url)
       .then((response) => {
         const totalCount = response.headers.get('X-Total-Count');
         response.json().then((data) => {
@@ -38,7 +39,7 @@ class EmployeeList extends BaseComponent {
   }
   
   handleDelete(data) {
-    const url= `/employees/${data.id}`;
+    const url= `/employees/${data.id - 1}.json`;
     api.delete(url)
       .then((response) => {
         response.json().then(() => {
@@ -86,6 +87,7 @@ class EmployeeList extends BaseComponent {
   renderList() {
     return (
       this.state.results.map((result) => {
+        if(!result) { return ''; }
         return (
           <ListItem 
             key={result.id} 

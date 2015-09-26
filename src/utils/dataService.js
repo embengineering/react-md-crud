@@ -4,45 +4,44 @@ import config from '../config';
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
-var rootUrl = window.location.hostname === 'localhost' ? `http://localhost:${config.port}` : '';
+class Dataservice {
 
-var Dataservice = function (){
-  if (!(this instanceof Dataservice)) {
-    return new Dataservice();
+	setUrl (restUrl) {
+    this.restUrl = restUrl;
   }
-};
 
-Dataservice.prototype.send = function(method, url, data, handleError) {
-  const requestSettings = { method: method };
-  if (method !== 'GET') {
-    requestSettings.body = JSON.stringify(data);
-    requestSettings.headers = {
-      Accept: 'application/json'
-      ,'Content-Type': 'application/json'
-    };
-  }
-  return fetch(rootUrl + url, requestSettings)
-    .catch((error) => {
-      if(handleError) {
-        handleError(error);
-      }
-    });
-};
+  send (method, url, data, handleError) {
+	  const requestSettings = { method: method };
+	  if (method !== 'GET') {
+	    requestSettings.body = JSON.stringify(data);
+	    requestSettings.headers = {
+	      Accept: 'application/json'
+	      ,'Content-Type': 'application/json'
+	    };
+	  }
+	  return fetch(this.restUrl + url, requestSettings)
+	    .catch((error) => {
+	      if(handleError) {
+	        handleError(error);
+	      }
+	    });
+	}
 
-Dataservice.prototype.get = function(url, handleError) {
-  return this.send('GET', url, {}, handleError);
-};
+	get (url, handleError) {
+	  return this.send('GET', url, {}, handleError);
+	}
 
-Dataservice.prototype.post = function(url, data, handleError) {
-  return this.send('POST', url, data, handleError);
-};
+	post (url, data, handleError) {
+	  return this.send('POST', url, data, handleError);
+	}
 
-Dataservice.prototype.put = function(url, data, handleError) {
-  return this.send('PUT', url, data, handleError);
-};
+	put (url, data, handleError) {
+	  return this.send('PUT', url, data, handleError);
+	}
 
-Dataservice.prototype.delete = function(url, data, handleError) {
-  return this.send('DELETE', url, data, handleError);
-};
+	delete(url, data, handleError) {
+		return this.send('DELETE', url, data, handleError);
+	}
+}
 
-module.exports = new Dataservice();
+export default new Dataservice();
