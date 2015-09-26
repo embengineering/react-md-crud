@@ -23,7 +23,8 @@ class EmpoyeeForm extends BaseComponent {
   }
 
   updateEmployee(employee, callback) {
-    api.put('/employees/' + employee.id, employee)
+    const url= `/employees/${employee.id - 1}.json`;
+    api.put(url, employee)
       .then((response) => {
         response.json().then((data) => {
           callback(data);
@@ -32,7 +33,8 @@ class EmpoyeeForm extends BaseComponent {
   }
 
   createEmployee(employee, callback) {
-    api.post('/employees', employee)
+    const url= '/employees.json';
+    api.post(url, employee)
       .then((response) => {
         response.json().then((data) => {
           callback(data);

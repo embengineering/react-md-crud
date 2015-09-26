@@ -1,6 +1,7 @@
 'use strict';
 import React from 'react';
 import { run, Route, HashLocation, DefaultRoute } from 'react-router';
+import { Util } from 'core';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Layout from './components/Layout.jsx';
 import Home from './components/Home.jsx';
@@ -13,6 +14,9 @@ window.React = React;
 //Check this repo:
 //https://github.com/zilverline/react-tap-event-plugin
 injectTapEventPlugin();
+
+// set data service url
+Util.dataService.setUrl('https://emb0624-employees.firebaseio.com');
 
 var routes = (
   <Route handler={Layout}>
