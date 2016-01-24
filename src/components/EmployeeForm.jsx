@@ -7,10 +7,10 @@ class EmpoyeeForm extends BaseComponent {
 
   constructor(props) {
     super(props);
-    this._bind('resetForm', 'handleFieldChange', 'setEmployee', 'handleSaveButton');
+    this._bind('resetForm', 'handleFieldChange', 'setEmployee', 'handleSaveButton', 'handleCancelButton', 'getForm');
     this.state = {
       title: 'New Employee'
-    	,model: this.getInitialModel()
+      ,model: this.getInitialModel()
     };
   }
 
@@ -19,7 +19,12 @@ class EmpoyeeForm extends BaseComponent {
       this.updateEmployee(this.state.model, this.props.onSave);
     } else {
       this.createEmployee(this.state.model, this.props.onSave);
-    }    
+    }
+  }
+
+  handleCancelButton() {
+    this.resetForm();
+    this.props.onCancel();
   }
 
   updateEmployee(employee, callback) {
@@ -43,9 +48,9 @@ class EmpoyeeForm extends BaseComponent {
   }
 
   resetForm() {
-    this.setState({ 
+    this.setState({
       title: 'New Employee'
-      ,model: this.getInitialModel() 
+      ,model: this.getInitialModel()
     });
   }
 
@@ -64,9 +69,9 @@ class EmpoyeeForm extends BaseComponent {
   }
 
   setEmployee(data) {
-    this.setState({ 
+    this.setState({
       title: 'Update Employee'
-      ,model: data 
+      ,model: data
     });
   }
 
@@ -75,16 +80,16 @@ class EmpoyeeForm extends BaseComponent {
     this.setState({ model: this.state.model });
   }
 
-  render() {
+  getForm () {
     const textFieldCommon = { minWidth: 200, marginLeft: 20 };
 
     return (
       <Card {...this.props} >
         <CardTitle title={this.state.title} />
-        <div style={{ 
+        <div style={{
           display: 'flex'
           ,flexFlow: 'row wrap'
-          ,justifyContent: 'flex-start' 
+          ,justifyContent: 'flex-start'
           ,alignContent: 'center'
           ,alignItems: 'center'
           ,height: 'auto'
@@ -106,10 +111,10 @@ class EmpoyeeForm extends BaseComponent {
           <TextField
             name="secondLastName"
             value={this.state.model.secondLastName}
-            onChange={this.handleFieldChange}  
+            onChange={this.handleFieldChange}
             style={textFieldCommon}
             hintText="Second Last Name"
-            floatingLabelText="Second Last Name" />            
+            floatingLabelText="Second Last Name" />
           <TextField
             name="jobTitle"
             value={this.state.model.jobTitle}
@@ -118,14 +123,14 @@ class EmpoyeeForm extends BaseComponent {
             hintText="Job Title"
             floatingLabelText="Job Title" />
           <TextField
-            name="location" 
+            name="location"
             value={this.state.model.location}
             onChange={this.handleFieldChange}
             style={textFieldCommon}
             hintText="Location"
             floatingLabelText="Location" />
           <TextField
-            name="email" 
+            name="email"
             value={this.state.model.email}
             onChange={this.handleFieldChange}
             style={textFieldCommon}
@@ -133,7 +138,7 @@ class EmpoyeeForm extends BaseComponent {
             hintText="Email"
             floatingLabelText="Email" />
           <TextField
-            name="phoneNumber" 
+            name="phoneNumber"
             value={this.state.model.phoneNumber}
             onChange={this.handleFieldChange}
             style={textFieldCommon}
@@ -142,28 +147,36 @@ class EmpoyeeForm extends BaseComponent {
             floatingLabelText="Phone" />
         </div>
         <div style={{ margin: '30px 20px' }}>
-          <FlatButton 
-            label="Save" 
+          <FlatButton
+            label="Save"
             primary={true}
             onClick={this.handleSaveButton}
           />
-          <FlatButton 
-            label="Cancel" 
-            secondary={true} 
-            onClick={this.resetForm}
+          <FlatButton
+            label="Cancel"
+            secondary={true}
+            onClick={this.handleCancelButton}
           />
         </div>
       </Card>
     );
   }
+
+  render() {
+    return this.props.show ? this.getForm() : null;
+  }
 }
 
 EmpoyeeForm.propTypes = {
   onSave: React.PropTypes.func
+  ,onCancel: React.PropTypes.func
+  ,show: React.PropTypes.bool
 };
 
 EmpoyeeForm.defaultProps = {
   onSave: () => {}
+  ,onCancel: () => {}
+  ,show: true
 };
 
 export default EmpoyeeForm;

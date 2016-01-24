@@ -21,6 +21,7 @@ coverage
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 example/dist/
+example/src/sass/vendor/
 lib/
 
 # Dependency directory
