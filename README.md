@@ -16,4 +16,4 @@ Now that `gulp` is running, the server is up as well and serving files from the 
 
 ---
 
-Demo http://emb0624.github.io/react-md-crud/#/
+Demo https://emb0624-react-md-crud.herokuapp.com
