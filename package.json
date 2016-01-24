@@ -17,7 +17,9 @@
   "homepage": "https://github.com/emb0624/react-material-design-crud",
   "main": "lib/index.js",
   "scripts": {
-    "install": "gulp buildProd"
+    "postinstall": "npm run deploy",
+    "start": "node server.js",
+    "deploy": "gulp buildProd"
   },
   "aliasify": {
     "aliases": {
