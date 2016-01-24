@@ -1,4 +1,4 @@
-var dest = './example/dist';
+var dest = './public';
 var src = './example/src';
 var libDest = './lib';
 var libSrc = './src';
