@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseComponent from './BaseComponent';
+import BaseComponent from './BaseComponent.jsx';
 import _ from 'lodash';
 import api from '../utils/dataService';
 import { Card, CardTitle, List, ListItem, Avatar, FontIcon, IconMenu, IconButton } from 'material-ui';
@@ -37,7 +37,7 @@ class EmployeeList extends BaseComponent {
         });
       });
   }
-  
+
   handleDelete(data) {
     const url= `/employees/${data.id - 1}.json`;
     api.delete(url)
@@ -57,12 +57,12 @@ class EmployeeList extends BaseComponent {
   renderRightMenu(result) {
     return (
       <IconMenu iconButtonElement={this.renderRightIconButton()}>
-        <MenuItem 
+        <MenuItem
         	primaryText="Edit"
         	onClick={this.props.onSelect.bind(this, result)}
         	/>
-        <MenuItem 
-        	primaryText="Delete" 
+        <MenuItem
+        	primaryText="Delete"
       		onClick={this.handleDelete.bind(this, result)}
         	/>
       </IconMenu>
@@ -89,9 +89,9 @@ class EmployeeList extends BaseComponent {
       this.state.results.map((result) => {
         if(!result) { return ''; }
         return (
-          <ListItem 
-            key={result.id} 
-            primaryText={result.firstName + ' ' + result.lastName} 
+          <ListItem
+            key={result.id}
+            primaryText={result.firstName + ' ' + result.lastName}
             leftAvatar={this.renderLeftAvatar()}
             secondaryText={this.renderSecondaryText(result)}
             rightIconButton={this.renderRightMenu(result)}

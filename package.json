@@ -1,80 +1,77 @@
 {
   "name": "emb-react-md",
+  "private": true,
   "version": "0.0.1",
   "engines": {
-    "node": "4.1.x",
-    "npm": "3.3.x"
+    "node": "4.2.x",
+    "npm": "3.5.x"
   },
   "description": "CRUD application built on React Material Design",
   "repository": {
     "type": "git",
-    "url": "git@github.com:emb0624/react-material-design-crud.git"
+    "url": "git@github.com:emb0624/react-md-crud.git"
   },
   "author": "Emmanuel Morales <emorales0024@gmail.com> (https://github.com/emb0624)",
   "bugs": {
-    "url": "https://github.com/emb0624/react-material-design-crud/issues"
+    "url": "https://github.com/emb0624/react-md-crud/issues"
   },
-  "homepage": "https://github.com/emb0624/react-material-design-crud",
-  "main": "lib/index.js",
+  "homepage": "https://github.com/emb0624/react-md-crud",
+  "main": "public/app.js",
   "scripts": {
     "postinstall": "npm run deploy",
-    "start": "node server.js",
-    "deploy": "set NODE_ENV=production && gulp buildProd"
+    "start": "node server",
+    "build": "webpack --progress --colors",
+    "watch": "webpack-dev-server --inline --hot --colors",
+    "deploy": "set NODE_ENV=production && webpack --config ./webpack.prod.config.js"
   },
   "aliasify": {
     "aliases": {
-      "underscore": "lodash",
-      "core": "./lib"
+      "underscore": "lodash"
     }
   },
   "license": "MIT",
-  "devDependencies": {},
   "dependencies": {
-    "aliasify": "^1.7.2",
     "animate.css": "^3.4.0",
+    "babel-core": "5.8.14",
     "babel-eslint": "^3.1.18",
-    "babelify": "^6.1.2",
-    "browser-sync": "~2.7.12",
-    "browserify": "^10.2.4",
-    "browserify-shim": "^3.8.9",
-    "classnames": "^2.1.3",
-    "del": "^1.2.0",
+    "babel-loader": "5.3.2",
+    "bootstrap-sass": "^3.3.6",
+    "bootstrap-sass-loader": "^1.0.9",
+    "classnames": "^2.2.3",
+    "css-loader": "^0.23.0",
     "es6-promise": "^2.3.0",
-    "eslint": "^0.23.0",
-    "eslint-plugin-react": "^2.5.2",
     "express": "^4.13.4",
+    "file-loader": "^0.8.5",
+    "firebase": "^2.2.9",
     "flux": "^2.1.1",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^2.3.1",
-    "gulp-babel": "^5.2.1",
-    "gulp-changed": "^1.3.0",
-    "gulp-eslint": "^0.14.0",
-    "gulp-filesize": "0.0.6",
-    "gulp-json-server": "0.0.7",
-    "gulp-notify": "^2.2.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.0.3",
-    "gulp-sourcemaps": "^1.5.2",
-    "gulp-uglify": "^1.2.0",
-    "gulp-util": "^3.0.6",
+    "font-awesome": "^4.4.0",
+    "font-awesome-sass-loader": "^1.0.1",
+    "history": "^1.16.0",
     "isomorphic-fetch": "^2.1.1",
     "keymirror": "^0.1.1",
-    "lodash": "^3.10.0",
-    "material-ui": "^0.10.1",
-    "merge-stream": "^0.1.7",
-    "node-fetch": "^1.3.1",
+    "lodash": "^3.10.1",
+    "material-ui": "^0.14.3",
+    "node-sass": "^3.4.2",
     "object-assign": "^4.0.1",
     "path": "^0.12.7",
-    "pretty-hrtime": "^1.0.0",
-    "react": "^0.13.3",
-    "react-router": "^0.13.3",
-    "react-tap-event-plugin": "^0.1.7",
-    "react-toastr": "^1.5.1",
-    "require-dir": "^0.3.0",
-    "run-sequence": "^1.1.1",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "react-router": "^1.0.2",
+    "react-tap-event-plugin": "^0.2.2",
+    "react-toastr": "^2.4.0",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
     "toastr": "^2.1.2",
+    "trim": "0.0.1",
     "underscore": "^1.8.3",
-    "vinyl-source-stream": "~1.1.0",
-    "watchify": "^3.2.2"
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.9"
+  },
+  "devDependencies": {
+    "babel-eslint": "^5.0.0-beta6",
+    "eslint": "^1.10.3",
+    "eslint-plugin-react": "^3.11.3",
+    "react-hot-loader": "1.2.8",
+    "webpack-dev-server": "1.10.1"
   }
 }

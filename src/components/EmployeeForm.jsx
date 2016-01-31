@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseComponent from './BaseComponent';
+import BaseComponent from './BaseComponent.jsx';
 import api from '../utils/dataService';
 import { Card, CardTitle, TextField, FlatButton  } from 'material-ui';
 
