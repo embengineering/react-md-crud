@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseComponent from './BaseComponent';
+import BaseComponent from './BaseComponent.jsx';
 import { Dialog, FlatButton } from 'material-ui';
 
 class ConfirmationModal extends BaseComponent {

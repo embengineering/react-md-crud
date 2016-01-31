@@ -1,5 +1,8 @@
 import React from 'react';
-import { BaseComponent, EmployeeList, EmployeeForm, Action } from 'core';
+import BaseComponent from './BaseComponent.jsx';
+import EmployeeList from './EmployeeList.jsx';
+import EmployeeForm from './EmployeeForm.jsx';
+import Action from '../actions';
 import { FloatingActionButton, FontIcon } from 'material-ui';
 
 class Home extends BaseComponent {

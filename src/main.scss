@@ -1,3 +1,8 @@
 @import "./vendor/toastr/_main.scss";
 @import "./vendor/animate-css/_main.scss";
-@import "./partials/_reset.scss";
+
+body {
+	padding: 0;
+	margin: 0;
+	font-family: Roboto, sans-serif;
+}

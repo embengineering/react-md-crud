@@ -1,11 +1,10 @@
 import React from 'react';
-import BaseComponent from './BaseComponent';
-import ReactToastr from 'react-toastr';
+import BaseComponent from './BaseComponent.jsx';
+import { ToastContainer, ToastMessage } from 'react-toastr';
 import NotificationStore from '../stores/NotificationStore';
 import NotificationConstants from '../constants/NotificationConstants';
 
-const {ToastContainer} = ReactToastr;
-const ToastMessageFactory = React.createFactory(ReactToastr.ToastMessage.animation);
+const ToastMessageFactory = React.createFactory(ToastMessage.animation);
 
 class Toastr extends BaseComponent {
 

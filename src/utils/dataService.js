@@ -1,5 +1,3 @@
-import config from '../config';
-
 // This adds fetch and es6-promise as a global
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
