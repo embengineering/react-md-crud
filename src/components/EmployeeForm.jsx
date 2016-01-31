@@ -84,7 +84,7 @@ class EmpoyeeForm extends BaseComponent {
     const textFieldCommon = { minWidth: 200, marginLeft: 20 };
 
     return (
-      <Card {...this.props} >
+      <Card {...this.props} className={!this.props.show ? 'hidden' : ''}>
         <CardTitle title={this.state.title} />
         <div style={{
           display: 'flex'
@@ -163,7 +163,7 @@ class EmpoyeeForm extends BaseComponent {
   }
 
   render() {
-    return this.props.show ? this.getForm() : null;
+    return this.getForm();
   }
 }
 
