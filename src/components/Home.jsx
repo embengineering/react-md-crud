@@ -16,6 +16,7 @@ class Home extends BaseComponent {
   }
 
   handleEmployeeSelect(data) {
+    this.setState({ showForm: true });
     this.scrollTop();
     this.refs.employeeForm.setEmployee(data);
   }
@@ -36,7 +37,9 @@ class Home extends BaseComponent {
   }
 
   handleSaveForm() {
+    this.setState({ showForm: false });
     this.refs.employeeList.refresh();
+    this.scrollTop();
     Action.Notification.success('Employee successfully saved!', 'Notification', {
       closeButton: true
       ,timeOut: 3000 // How long the toast will display without user interaction
@@ -46,6 +49,7 @@ class Home extends BaseComponent {
 
   handleCancelForm() {
     this.setState({ showForm: false });
+    this.scrollTop();
   }
 
   scrollTop() {
@@ -70,7 +74,7 @@ class Home extends BaseComponent {
           />
         <FloatingActionButton
           onClick={this.handleAddNew}
-          style={{ position: 'fixed', top: 30, right: 30, zIndex: 2 }}>
+          style={{ position: 'fixed', top: 30, right: 30, zIndex: 9999 }}>
           <FontIcon className="fa fa-plus" />
         </FloatingActionButton>
       </div>

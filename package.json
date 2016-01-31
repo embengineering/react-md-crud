@@ -44,6 +44,8 @@
     "file-loader": "^0.8.5",
     "firebase": "^2.2.9",
     "flux": "^2.1.1",
+    "font-awesome": "^4.4.0",
+    "font-awesome-sass-loader": "^1.0.1",
     "history": "^1.16.0",
     "isomorphic-fetch": "^2.1.1",
     "keymirror": "^0.1.1",
