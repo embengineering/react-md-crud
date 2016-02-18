@@ -23,7 +23,7 @@ module.exports = {
       {
         test: /\.jsx?$/
         ,include: path.resolve(__dirname, 'src')
-        ,loader: 'react-hot!babel'
+        ,loader: 'react-hot!babel-loader'
       }
       ,{
         test: /\.scss$/
