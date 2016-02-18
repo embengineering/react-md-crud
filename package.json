@@ -24,16 +24,10 @@
     "watch": "webpack-dev-server --inline --hot --colors",
     "deploy": "set NODE_ENV=production && webpack --config ./webpack.prod.config.js"
   },
-  "aliasify": {
-    "aliases": {
-      "underscore": "lodash"
-    }
-  },
   "license": "MIT",
   "dependencies": {
     "animate.css": "^3.4.0",
     "babel-core": "5.8.14",
-    "babel-eslint": "^3.1.18",
     "babel-loader": "5.3.2",
     "bootstrap-sass": "^3.3.6",
     "bootstrap-sass-loader": "^1.0.9",
@@ -68,7 +62,7 @@
     "webpack": "^1.12.9"
   },
   "devDependencies": {
-    "babel-eslint": "^5.0.0-beta6",
+    "babel-eslint": "^5.0.0",
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.11.3",
     "react-hot-loader": "1.2.8",
