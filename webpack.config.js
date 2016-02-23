@@ -43,12 +43,5 @@ module.exports = {
 
   ,plugins: [
     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
-    ,new webpack.optimize.DedupePlugin()
-    ,new webpack.optimize.UglifyJsPlugin({
-      minimize: false
-      ,compress: {
-        warnings: false
-      }
-    })
   ]
 };

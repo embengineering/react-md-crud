@@ -1,27 +1,15 @@
 import React from 'react';
-import {connect} from 'react-redux';
-
-import BaseComponent from '../components/BaseComponent.jsx';
-import Home from '../components/Home.jsx';
-import Toastr from '../components/Toastr.jsx';
-
 import {AppBar} from 'material-ui';
 
-class App extends BaseComponent {
+import HomeContainer from '../containers/HomeContainer.jsx';
+import NotificationContainer from '../containers/NotificationContainer.jsx';
 
-  constructor(props) {
-    super(props);
-  }
+const App = () => (
+  <div>
+    <AppBar title="REACT-MD-CRUD" />
+    <HomeContainer />
+    <NotificationContainer />
+  </div>
+);
 
-  render() {
-    return (
-      <div>
-        <AppBar title="REACT-MD-CRUD" />
-        <Home />
-        <Toastr />
-      </div>
-    );
-  }
-}
-
-export default connect()(App);
+export default App;

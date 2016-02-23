@@ -1,8 +1,1 @@
-import keyMirror from 'keymirror';
-
-export default keyMirror({
-  NOTIFICATION_SUCCESS: null
-  ,NOTIFICATION_ERROR: null
-  ,NOTIFICATION_WARNING: null
-  ,NOTIFICATION_INFO: null
-});
+export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';

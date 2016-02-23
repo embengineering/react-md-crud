@@ -2,10 +2,9 @@ import React from 'react';
 import BaseComponent from './BaseComponent.jsx';
 import EmployeeList from './EmployeeList.jsx';
 import EmployeeForm from './EmployeeForm.jsx';
-import Action from '../actions';
 import { FloatingActionButton, FontIcon } from 'material-ui';
 
-class Home extends BaseComponent {
+class HomeComponent extends BaseComponent {
 
   constructor(props) {
     super(props);
@@ -23,11 +22,7 @@ class Home extends BaseComponent {
 
   handleEmployeeDelete() {
     this.refs.employeeList.refresh();
-    Action.Notification.success('Contact successfully deleted!', 'Notification', {
-      closeButton: true
-      ,timeOut: 3000 // How long the toast will display without user interaction
-      ,extendedTimeOut: 3000 // How long the toast will display after a user hovers over it
-    });
+    this.props.onEmployeeDelete();
   }
 
   handleAddNew() {
@@ -40,11 +35,7 @@ class Home extends BaseComponent {
     this.setState({ showForm: false });
     this.refs.employeeList.refresh();
     this.scrollTop();
-    Action.Notification.success('Employee successfully saved!', 'Notification', {
-      closeButton: true
-      ,timeOut: 3000 // How long the toast will display without user interaction
-      ,extendedTimeOut: 3000 // How long the toast will display after a user hovers over it
-    });
+    this.props.onEmployeeSaved();
   }
 
   handleCancelForm() {
@@ -82,4 +73,4 @@ class Home extends BaseComponent {
   }
 }
 
-export default Home;
+export default HomeComponent;
