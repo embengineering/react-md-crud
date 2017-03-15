@@ -13,7 +13,7 @@ class EmployeeList extends BaseComponent {
     super(props);
     this._bind('getExternalData', 'renderList', 'renderRightMenu', 'handleDelete');
     this.state = {
-    	results: []
+    	employees: {}
     };
   }
 
@@ -32,7 +32,7 @@ class EmployeeList extends BaseComponent {
         const totalCount = response.headers.get('X-Total-Count');
         response.json().then((data) => {
           this.setState({
-            results: data
+            employees: data || {}
           });
         });
       });
@@ -85,16 +85,18 @@ class EmployeeList extends BaseComponent {
   }
 
   renderList() {
+    const employees = this.state.employees || {};
     return (
-      this.state.results.map((result) => {
-        if(!result) { return ''; }
+      Object.keys(employees).map(key => {
+        const employee = employees[key];
+        if(!employee) { return ''; }
         return (
           <ListItem
-            key={result.id}
-            primaryText={result.firstName + ' ' + result.lastName}
+            key={employee.id}
+            primaryText={employee.firstName + ' ' + employee.lastName}
             leftAvatar={this.renderLeftAvatar()}
-            secondaryText={this.renderSecondaryText(result)}
-            rightIconButton={this.renderRightMenu(result)}
+            secondaryText={this.renderSecondaryText(employee)}
+            rightIconButton={this.renderRightMenu(employee)}
           />
         );
       })
@@ -114,12 +116,14 @@ class EmployeeList extends BaseComponent {
 }
 
 EmployeeList.propTypes = {
-  onSelect: React.PropTypes.func
+  employees: React.PropTypes.object
   ,onDelete: React.PropTypes.func
+  ,onSelect: React.PropTypes.func
 };
 
 EmployeeList.defaultProps = {
-  onSelect: () => {}
+  employees: {}
+  ,onSelect: () => {}
   ,onDelete: () => {}
 };
 
